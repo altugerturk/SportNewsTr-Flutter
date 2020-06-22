@@ -35,7 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int _current = 0;
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -75,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           Padding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.03),
+            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.03),
             child: IconButton(
                 icon: Icon(
                   Icons.search,
@@ -93,7 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
     double containerHeight = MediaQuery.of(context).size.height * 0.3;
     return CarouselSlider(
       height: containerHeight,
-      
       enableInfiniteScroll: false,
       initialPage: _current,
       scrollDirection: Axis.horizontal,
@@ -105,49 +103,54 @@ class _MyHomePageState extends State<MyHomePage> {
       items: newss.map((i) {
         return Builder(
           builder: (BuildContext context) {
-            return Container(
-              
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
-              decoration: BoxDecoration(
-                color: Colors.amberAccent,
-                borderRadius: BorderRadius.circular(24)
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24)
-                    ),
-                    
-                    height: containerHeight * 0.6,
-                    width: containerWidth,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24),
-                                          child: Image.network(
-                        i.urlImage,
-                        fit: BoxFit.fill,
-                       
+            return InkWell(
+              onTap: () {
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailPage(
+                              newss: newss[_current],
+                            )));
+              },
+                          child: Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                decoration: BoxDecoration(
+                    color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(24)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(24)),
+                      height: containerHeight * 0.6,
+                      width: containerWidth,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: Image.network(
+                          i.urlImage,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: containerHeight * 0.4,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Center(
-                          child: Text(
-                            i.title,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
+                    Container(
+                      height: containerHeight * 0.4,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Center(
+                            child: Text(
+                              i.title,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },
@@ -183,7 +186,6 @@ class NewsList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
                   newss[index].urlImage,
-                  
                   fit: BoxFit.fill,
                 ),
               ),
