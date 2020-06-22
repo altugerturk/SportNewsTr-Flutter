@@ -5,6 +5,7 @@ A new Flutter project.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
+/Users/altugerturk/Desktop/Simulator Screen Shot - iPhone 11 Pro Max - 2020-06-23 at 00.12.47.png
 
 A few resources to get you started if this is your first Flutter project:
 
